@@ -9,6 +9,7 @@ import ia.base.metier.TypeMouvement;
 import ia.base.metier.carte.cases.Case;
 import ia.base.metier.carte.cases.FabriqueCase;
 import ia.base.metier.carte.cases.TypeCase;
+import ia.base.metier.carte.objet.FabriqueObjet;
 import java.util.HashMap;
 
 /**
@@ -66,6 +67,17 @@ public class Carte {
             System.out.println(c.getCoordonnee().toString());
         }
         System.out.println("Fin test des voisins");
+        
+        //changement de l'objet contenu dans les trois cases situées en dessous de la case de départ
+        Case caseEscalierMilieu = FabriqueCase.creer(coordonneeDepart.getVoisin(TypeMouvement.BOTTOM), 'H');
+        caseEscalierMilieu.setObjet(FabriqueObjet.creer(caseEscalierMilieu, 'S'));
+        Case caseEscalierDroite = FabriqueCase.creer(caseEscalierMilieu.getCoordonnee().getVoisin(TypeMouvement.RIGHT), 'H');
+        caseEscalierDroite.setObjet(FabriqueObjet.creer(caseEscalierDroite, 'S'));
+        Case caseEscalierGauche = FabriqueCase.creer(caseEscalierMilieu.getCoordonnee().getVoisin(TypeMouvement.LEFT), 'H');
+        caseEscalierGauche.setObjet(FabriqueObjet.creer(caseEscalierGauche, 'S'));
+        this.cases.replace(caseEscalierMilieu.getCoordonnee(), caseEscalierMilieu);
+        this.cases.replace(caseEscalierDroite.getCoordonnee(), caseEscalierGauche);
+        this.cases.replace(caseEscalierGauche.getCoordonnee(), caseEscalierGauche);
     }
     
     public int getTaille() {
