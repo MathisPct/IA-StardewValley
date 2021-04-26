@@ -125,4 +125,13 @@ public class Carte {
     public Coordonnee getCoordonneeDepart() {
         return coordonneeDepart;
     }
+    
+    /**
+     * retourne la case situé aux coordonnées passées en paramètre
+     * @param coordonnee d'une case sur la carte
+     * @return la case qui est située aux coordonnées passées en paramètre
+     */
+    public Case getCase(Coordonnee coordonnee){
+        return this.cases.get(coordonnee);
+    }
 }
