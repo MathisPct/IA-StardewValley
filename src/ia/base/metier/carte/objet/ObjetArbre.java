@@ -21,5 +21,12 @@ public class ObjetArbre extends Objet{
     public TypeObjet getType() {
         return TypeObjet.ARBRE;
     }
+
+    @Override
+    public boolean estBloquant() {
+        return true;
+    }
+    
+    
     
 }

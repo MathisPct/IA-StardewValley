@@ -21,6 +21,12 @@ public class ObjetMaison extends Objet{
     public TypeObjet getType() {
         return TypeObjet.MAISON;
     }
+
+    @Override
+    public boolean estBloquant() {
+        return true;
+    }
+    
     
     
 }

@@ -23,4 +23,11 @@ public abstract class Objet {
     }
     
     public abstract TypeObjet getType();
+    
+    /**
+     * permet de savoir si un objet bloque le passage de Abigail
+     * @return true pour les arbres et la maison et renvoie false pour les autres
+     * objets
+     */
+    public abstract boolean estBloquant();
 }

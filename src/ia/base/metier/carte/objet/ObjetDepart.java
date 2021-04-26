@@ -21,4 +21,11 @@ public class ObjetDepart extends Objet{
     public TypeObjet getType() {
         return TypeObjet.DEPART;
     }    
+
+    @Override
+    public boolean estBloquant() {
+        return false;
+    }
+    
+    
 }

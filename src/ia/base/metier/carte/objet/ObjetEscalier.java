@@ -21,4 +21,11 @@ public class ObjetEscalier extends Objet{
     public TypeObjet getType() {
         return TypeObjet.ESCALIER;
     }    
+
+    @Override
+    public boolean estBloquant() {
+        return false;
+    }
+    
+    
 }
