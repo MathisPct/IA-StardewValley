@@ -48,7 +48,7 @@ public class Carte {
                 }
             }
 	}
-        
+        /*
         System.out.println("Test des voisins");
         System.out.println("Case (0,0)");
         //voisins de la case 1 : ligne 0, colonne 0
@@ -78,6 +78,7 @@ public class Carte {
         this.cases.replace(caseEscalierMilieu.getCoordonnee(), caseEscalierMilieu);
         this.cases.replace(caseEscalierDroite.getCoordonnee(), caseEscalierGauche);
         this.cases.replace(caseEscalierGauche.getCoordonnee(), caseEscalierGauche);
+        */
     }
     
     public int getTaille() {
