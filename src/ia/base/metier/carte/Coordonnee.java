@@ -84,6 +84,11 @@ public class Coordonnee {
     /**
      * Renvoie le type de mouvement pour aller de la case courante à la case
      * de destination avec ses coordonnées passées en paramètre
+     * On réalise tous les mouvements possibles pour visiter les voisins de
+     * la case courante afin d'obtenir les coordonnées de chaque case et vérifier
+     * si elles correpondent à celles passées en paramètre. Si elles correspondent 
+     * à celles de la case courante, le mouvement à faire pour aller vers cette case
+     * est renvoyé.
      * @param destination coordonnées de la case de sdestination
      * @return le type de mouvement à faire pour aller à la case de destination
      */
