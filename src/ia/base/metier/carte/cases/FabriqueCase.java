@@ -35,7 +35,6 @@ public class FabriqueCase {
                 break;
             case 'E':
                 caseCree = new CaseEau(coordonnee);
-                caseCree.setObjet(FabriqueObjet.creer(caseCree, lettre));
                 break;
             case 'A':
                 caseCree = new CaseHerbe(coordonnee);
