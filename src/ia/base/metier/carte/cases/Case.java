@@ -6,7 +6,7 @@
 package ia.base.metier.carte.cases;
 
 import ia.base.metier.carte.Coordonnee;
-import ia.base.metier.carte.objets.Objet;
+import ia.base.metier.carte.objet.Objet;
 import java.util.ArrayList;
 
 /**

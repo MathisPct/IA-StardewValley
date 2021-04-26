@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ia.base.metier.carte.objets;
+package ia.base.metier.carte.objet;
 
 import ia.base.metier.carte.cases.Case;
 
@@ -11,16 +11,14 @@ import ia.base.metier.carte.cases.Case;
  *
  * @author math7
  */
-public class ObjetMaison extends Objet{
+public class ObjetDepart extends Objet{
 
-    public ObjetMaison(Case postion) {
+    public ObjetDepart(Case postion) {
         super(postion);
     }
 
     @Override
     public TypeObjet getType() {
-        return TypeObjet.MAISON;
-    }
-    
-    
+        return TypeObjet.DEPART;
+    }    
 }
