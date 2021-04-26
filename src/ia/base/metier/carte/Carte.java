@@ -48,9 +48,7 @@ public class Carte {
             }
 	}
         
-        /**
-         * Test des voisins
-        
+        System.out.println("Test des voisins");
         System.out.println("Case (0,0)");
         //voisins de la case 1 : ligne 0, colonne 0
         Coordonnee c1 = new Coordonnee(0, 0);
@@ -67,7 +65,7 @@ public class Carte {
         for (Case c : this.cases.get(new Coordonnee(6, 4)).getVoisins()) {
             System.out.println(c.getCoordonnee().toString());
         }
-        * */
+        System.out.println("Fin test des voisins");
     }
     
     public int getTaille() {
