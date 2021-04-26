@@ -48,4 +48,11 @@ public abstract class Case  {
     public Coordonnee getCoordonnee() {
         return coordonnee;
     }
+    
+    /**
+     * permet de savoir si une case herbe ou eau contient un objet bloquant
+     * ou non
+     * @return true si une case terre ou d'herbe ne contient pas d'objet bloquant 
+     */
+    public abstract boolean estAccessible();
 }

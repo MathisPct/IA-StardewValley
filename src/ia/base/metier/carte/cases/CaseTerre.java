@@ -20,6 +20,10 @@ public class CaseTerre extends Case{
     public TypeCase getType() {
         return TypeCase.TERRE;
     }
-    
-    
+
+    @Override
+    public boolean estAccessible() {
+        return this.getObjet()==null;
+    }
+ 
 }
