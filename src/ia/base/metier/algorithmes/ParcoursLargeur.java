@@ -26,7 +26,7 @@ public class ParcoursLargeur extends AlgorithmeCalculDistance{
     public void calculerDistancesDepuis(Case depart) {
         Case caseEnCours;
         
-        ArrayList<Case> aTraiter = new ArrayList<>();
+        ArrayList<Case> aTraiter = new ArrayList<Case>();
         super.reintialisationDistances();
         aTraiter.add(depart);
         super.setDistance(depart, 0);
@@ -43,7 +43,7 @@ public class ParcoursLargeur extends AlgorithmeCalculDistance{
                     }
                 }
             }
-        }while(aTraiter.size()>0);
+        }while(!aTraiter.isEmpty());
     }
     
 }

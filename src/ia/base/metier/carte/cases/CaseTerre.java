@@ -23,7 +23,11 @@ public class CaseTerre extends Case{
 
     @Override
     public boolean estAccessible() {
-        return this.getObjet()==null;
+        boolean res = false;
+        if (this.getObjet().estBloquant() == false || this.getObjet()==null){
+            res = true;
+        }
+        return res;
     }
  
 }
