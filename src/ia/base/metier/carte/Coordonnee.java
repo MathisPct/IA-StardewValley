@@ -104,6 +104,6 @@ public class Coordonnee {
 
     @Override
     public String toString() {
-        return "Coordonnee{" + " (" + ligne + " , " + colonne + ") }";
+        return "Coordonnee{" + " (" + colonne + " , " + ligne + ") }";
     }
 }
