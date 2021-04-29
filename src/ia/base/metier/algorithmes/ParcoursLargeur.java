@@ -5,9 +5,11 @@
  */
 package ia.base.metier.algorithmes;
 
+import ia.base.metier.TypeMouvement;
 import ia.base.metier.carte.Carte;
 import ia.base.metier.carte.cases.Case;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -45,5 +47,26 @@ public class ParcoursLargeur extends AlgorithmeCalculDistance{
             }
         }while(!aTraiter.isEmpty());
     }
-    
+        
+    @Override
+    public ArrayList<TypeMouvement> getChemin(Case arrivee) {
+        ArrayList<TypeMouvement> mouvements = new ArrayList<>();
+        Case caseEnCours = arrivee;
+        Case casePrecedente = null;
+        
+        //calcul
+        if(super.getDistance(arrivee) != null){
+            do{
+                for(Case v : caseEnCours.getVoisins()){
+                    if(super.getDistance(v) != null && super.getDistance(v).equals(super.getDistance(caseEnCours)-1)){
+                        casePrecedente = v;
+                    }
+                }
+                mouvements.add(casePrecedente.getMouvementPourAller(caseEnCours));
+                caseEnCours = casePrecedente;
+            }while(super.getDistance(caseEnCours) > 0 );
+        }
+        Collections.reverse(mouvements);
+        return mouvements;
+    }
 }

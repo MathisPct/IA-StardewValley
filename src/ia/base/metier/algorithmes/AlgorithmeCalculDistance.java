@@ -5,8 +5,10 @@
  */
 package ia.base.metier.algorithmes;
 
+import ia.base.metier.TypeMouvement;
 import ia.base.metier.carte.Carte;
 import ia.base.metier.carte.cases.Case;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -55,4 +57,12 @@ public abstract class AlgorithmeCalculDistance {
      * @param depart la case de départ 
      */
     public abstract void calculerDistancesDepuis(Case depart);
+    
+    /**
+     * Permet de déterminer la séquence de mouvements à réaliser pour passer
+     * d'une case à l'autre
+     * @param arrivee la case vers laquelle on veut aller
+     * @return la séquence de mouvements à réaliser
+     */
+    public abstract ArrayList<TypeMouvement> getChemin(Case arrivee);
 }

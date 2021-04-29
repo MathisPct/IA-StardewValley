@@ -5,6 +5,7 @@
  */
 package ia.base.metier.carte.cases;
 
+import ia.base.metier.TypeMouvement;
 import ia.base.metier.carte.Coordonnee;
 import ia.base.metier.carte.objet.Objet;
 import java.util.ArrayList;
@@ -55,4 +56,20 @@ public abstract class Case  {
      * @return true si une case terre ou d'herbe ne contient pas d'objet bloquant 
      */
     public abstract boolean estAccessible();
+    
+    /**
+     * Renvoie le type de mouvement pour aller de la case courante vers la 
+     * case arrivée passée en paramètre
+     * @param arrivee la case voisine à la case courante
+     * @return le type de mouvement à réaliser
+     */
+    public TypeMouvement getMouvementPourAller(Case arrivee){
+        TypeMouvement res = null;
+        for(TypeMouvement mouvement : TypeMouvement.values()){
+            if(this.coordonnee.getVoisin(mouvement).equals(arrivee.coordonnee)){
+                res = mouvement;
+            }
+        }
+        return res;
+    }
 }
