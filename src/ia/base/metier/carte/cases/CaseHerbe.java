@@ -23,9 +23,11 @@ public class CaseHerbe extends Case{
 
     @Override
     public boolean estAccessible() {
-        boolean res = false;
-        if (this.getObjet().estBloquant() == false || this.getObjet()==null){
-            res = true;
+        boolean res = true;
+        if (this.getObjet() != null){
+            if(this.getObjet().estBloquant()){
+                res = false;
+            }
         }
         return res;
     }
