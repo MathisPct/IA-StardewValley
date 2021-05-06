@@ -2,8 +2,12 @@ package ia.base.modules;
 
 import ia.base.IA;
 import ia.base.metier.Joueur;
+import ia.base.metier.actions.Action;
+import ia.base.metier.actions.TypeAction;
 import ia.base.metier.carte.Carte;
 import ia.base.metier.carte.Coordonnee;
+import ia.base.metier.carte.cases.Case;
+import ia.base.metier.carte.cases.TypeCase;
 
 /**
  * Module en charge de la mémorisation et de la restitution des informations obtenues
@@ -59,5 +63,19 @@ public class Module_Memoire extends Module  {
         if (!hasJoueur()){
             joueur = new Joueur(coordonnee);
         }
+    }
+    
+    public void effectuerAction(Action action){
+        if(action.getType()== TypeAction.MOUVEMENT){
+            joueur.deplacer(action.getDirection());
+        }
+    }
+    
+    /**
+     * Renvoie la case où se trouve le joueur
+     * @return la case où se trouve le joueur
+     */
+    public Case getCaseJoueur(){
+        return this.getCarte().getCase(this.joueur.getCoordonnee());
     }
 }

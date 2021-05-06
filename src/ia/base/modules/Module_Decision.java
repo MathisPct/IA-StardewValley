@@ -1,6 +1,14 @@
 package ia.base.modules;
 
 import ia.base.IA;
+import ia.base.metier.TypeMouvement;
+import ia.base.metier.actions.Action;
+import ia.base.metier.actions.FabriqueAction;
+import ia.base.metier.actions.TypeDemande;
+import ia.base.metier.algorithmes.ParcoursLargeur;
+import ia.base.metier.carte.Carte;
+import ia.base.metier.carte.Coordonnee;
+import ia.base.metier.carte.cases.Case;
 import java.util.ArrayList;
 
 /**
@@ -9,12 +17,15 @@ import java.util.ArrayList;
  */
 public class Module_Decision extends Module {
     private int compteur;
+    private ArrayList<Action> listeDesActionsARealiser;
+    
     /**
      * Constructeur
      * @param ia l'IA dont ce module fait partie
      */
     public Module_Decision(IA ia) {
         super(ia);
+        this.listeDesActionsARealiser = new ArrayList<>();
         this.compteur = 0;
     }
     
@@ -24,28 +35,45 @@ public class Module_Decision extends Module {
      * @return le message à envoyer au serveur
      */
     public String determinerNouvelleAction(String messageRecu) {
-        String messageAEnvoye = "";
+        String messageAEnvoye = "END";
         //si le module mémoire ne dispose pas de carte la méthode renvoie "MAP"
         if ( !this.getIA().getModuleMemoire().hasCarte() ){
-            messageAEnvoye = "MAP";
-        }
-        //si le module mémoire dispose de la carte
-        else{
-            messageAEnvoye = "END";
-            this.getIA().arretDiscussion(); //arrêt discussion
+            this.listeDesActionsARealiser.add(FabriqueAction.creerDemande(TypeDemande.MAP));
         }
         
-        /* REPRISE DU TP1
-        //si le perso es bloqué msg "END" envoyé au serveur
-        if(messageRecu.contains("NOK")){
-            messageAEnvoye = "END";
-            super.getIA().arretDiscussion();
-        }else if(!messageRecu.equals("END")){
-            messageAEnvoye = this.script();
+        //détermine de nouvelles actions si besoin
+        if(this.listeDesActionsARealiser.isEmpty()){
+            this.determinerNouvellesActions();
         }
-
-        */
+        
+        //Réalisation de la première action de la liste
+        if(!this.listeDesActionsARealiser.isEmpty()){
+            messageAEnvoye = this.listeDesActionsARealiser.get(0).getMessage();
+            this.listeDesActionsARealiser.remove(0);
+        }else{
+            messageAEnvoye = "SLEEP";
+        } 
         return messageAEnvoye;
+    }
+    
+    private void determinerNouvellesActions(){
+        int ligne = (int) (Math.random() * super.getIA().getModuleMemoire().getCarte().getTaille());
+        int colonne = (int) (Math.random() * super.getIA().getModuleMemoire().getCarte().getTaille());
+        Coordonnee c = new Coordonnee(ligne, colonne);
+        seDeplacerEn(c);
+    }
+    
+    private void seDeplacerEn(Coordonnee coordonnee){
+        System.out.println("---Je veux aller en " + coordonnee + "---");
+        Carte carte = super.getIA().getModuleMemoire().getCarte();
+        ParcoursLargeur parcoursLargeur = new ParcoursLargeur(carte);
+        parcoursLargeur.calculerDistancesDepuis( super.getIA().getModuleMemoire().getCaseJoueur());
+        
+        Case caseDestination = carte.getCase(coordonnee);
+        ArrayList<TypeMouvement> mouvements = parcoursLargeur.getChemin(caseDestination);
+        for (TypeMouvement mouvement : mouvements) {
+            this.listeDesActionsARealiser.add(FabriqueAction.creerMouvement(mouvement));
+        }
     }
     
     private String script(){
