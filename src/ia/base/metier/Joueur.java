@@ -23,20 +23,7 @@ public class Joueur {
      * @param mouvement direction dans lequel le joueur va être déplacer sur la carte 
      */
     public void deplacer(TypeMouvement mouvement){
-        switch(mouvement){
-            case TOP:
-                this.coordonnee = new Coordonnee(coordonnee.getLigne() - 1, coordonnee.getColonne());
-                break;
-            case BOTTOM:
-                this.coordonnee = new Coordonnee(coordonnee.getLigne() + 1, coordonnee.getColonne());
-                break;
-            case LEFT:
-                this.coordonnee = new Coordonnee(coordonnee.getLigne(), coordonnee.getColonne() - 1);
-                break;
-            case RIGHT:
-                this.coordonnee = new Coordonnee(coordonnee.getLigne(), coordonnee.getColonne() + 1);
-                break;  
-        }
+        this.coordonnee = this.coordonnee.getVoisin(mouvement);
     }
     
     public Coordonnee getCoordonnee() {
