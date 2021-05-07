@@ -4,6 +4,7 @@ import ia.base.IA;
 import ia.base.metier.TypeMouvement;
 import ia.base.metier.actions.Action;
 import ia.base.metier.actions.FabriqueAction;
+import ia.base.metier.actions.TypeActionStatique;
 import ia.base.metier.actions.TypeDemande;
 import ia.base.metier.algorithmes.ParcoursLargeur;
 import ia.base.metier.carte.Carte;
@@ -49,9 +50,13 @@ public class Module_Decision extends Module {
         //Réalisation de la première action de la liste
         if(!this.listeDesActionsARealiser.isEmpty()){
             messageAEnvoye = this.listeDesActionsARealiser.get(0).getMessage();
+            super.getIA().getModuleMemoire().effectuerAction(listeDesActionsARealiser.get(0));
             this.listeDesActionsARealiser.remove(0);
         }else{
-            messageAEnvoye = "SLEEP";
+            allerDormir();
+            messageAEnvoye = this.listeDesActionsARealiser.get(0).getMessage();
+            super.getIA().getModuleMemoire().effectuerAction(listeDesActionsARealiser.get(0));
+            this.listeDesActionsARealiser.remove(0);
         } 
         return messageAEnvoye;
     }
@@ -74,6 +79,14 @@ public class Module_Decision extends Module {
         for (TypeMouvement mouvement : mouvements) {
             this.listeDesActionsARealiser.add(FabriqueAction.creerMouvement(mouvement));
         }
+    }
+    
+    /**
+     * Déplace le joueur à la case de départ et le fait dormir
+     */
+    private void allerDormir(){
+        this.seDeplacerEn(this.getIA().getModuleMemoire().getCarte().getCoordonneeDepart());
+        this.listeDesActionsARealiser.add(FabriqueAction.creerActionStatique(TypeActionStatique.DORMIR));
     }
     
     private String script(){

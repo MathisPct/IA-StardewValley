@@ -11,25 +11,21 @@ import ia.base.metier.TypeMouvement;
  *
  * @author Mathis Poncet
  */
-public class ActionDemande extends Action{
-    private String message;
-    
-    public ActionDemande(String message) {
-        this.message = message;
-    }
-    
+public class ActionDormir extends Action{
+
     @Override
-    public TypeMouvement getDirection() {
-        return null;
+    public String getMessage() {
+        return "SLEEP";
     }
 
     @Override
     public TypeAction getType() {
-        return TypeAction.DEMANDE;
+        return TypeAction.TYPESTATIQUE;
+    }
+
+    @Override
+    public TypeMouvement getDirection() {
+        return null;
     }
     
-    @Override
-    public String getMessage() {
-        return message;
-    }   
 }

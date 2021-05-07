@@ -7,8 +7,8 @@ package ia.base.metier.actions;
 
 /**
  *
- * @author math7
+ * @author Mathis Poncet
  */
-public enum TypeAction {
-    DEMANDE, MOUVEMENT, TYPESTATIQUE;
+public enum TypeActionStatique {
+    DORMIR;
 }

@@ -26,4 +26,19 @@ public class FabriqueAction {
         }
         return action;
     }
+    
+    /**
+     * Créer une action de type statique: dormir, cultiver, remplir son seau...
+     * @param type de l'action statique
+     * @return l'action statique à faire
+     */
+    public static Action creerActionStatique(TypeActionStatique type){
+        Action action = null;
+        switch(type){
+            case DORMIR:
+                action = new ActionDormir();
+                break;
+        }
+        return action;
+    }
 }

@@ -19,6 +19,10 @@ public class Coordonnee {
         this.ligne = ligne;
         this.colonne = colonne;
     }
+
+    public Coordonnee(Coordonnee coordonneeDepart) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public int getLigne() {
         return ligne;
@@ -104,6 +108,6 @@ public class Coordonnee {
 
     @Override
     public String toString() {
-        return "Coordonnee{" + " (" + colonne + " , " + ligne + ") }";
+        return "Coordonnee{" + " (" + ligne + " , " + colonne + ") }";
     }
 }

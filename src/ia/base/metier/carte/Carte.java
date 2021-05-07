@@ -58,6 +58,7 @@ public class Carte {
                 }
             }
 	}
+        afficheConsole();
         /*
         System.out.println("Test des voisins");
         System.out.println("Case (0,0)");
@@ -116,7 +117,7 @@ public class Carte {
                 else if(caseEnCours.getType() == TypeCase.TERRE){
                     affichage = "T";
                 }
-                System.out.println(affichage);
+                System.out.print(affichage);
             }
             System.out.println("");
         }

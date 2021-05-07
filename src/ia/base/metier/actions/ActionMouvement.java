@@ -25,7 +25,7 @@ public class ActionMouvement extends Action{
 
     @Override
     public TypeAction getType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return TypeAction.MOUVEMENT;
     }
     
     @Override
