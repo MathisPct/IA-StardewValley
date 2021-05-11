@@ -64,12 +64,6 @@ public abstract class Case  {
      * @return le type de mouvement à réaliser
      */
     public TypeMouvement getMouvementPourAller(Case arrivee){
-        TypeMouvement res = null;
-        for(TypeMouvement mouvement : TypeMouvement.values()){
-            if(this.coordonnee.getVoisin(mouvement).equals(arrivee.coordonnee)){
-                res = mouvement;
-            }
-        }
-        return res;
+        return this.getCoordonnee().getMouvementPourAller(arrivee.getCoordonnee());
     }
 }
