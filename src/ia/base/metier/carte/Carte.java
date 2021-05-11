@@ -34,12 +34,9 @@ public class Carte {
             }
         }
         
-        Case caseEscalierMilieu = FabriqueCase.creer(coordonneeDepart.getVoisin(TypeMouvement.BOTTOM), 'H');
-        caseEscalierMilieu.setObjet(FabriqueObjet.creer(caseEscalierMilieu, 'S'));
-        Case caseEscalierDroite = FabriqueCase.creer(caseEscalierMilieu.getCoordonnee().getVoisin(TypeMouvement.RIGHT), 'H');
-        caseEscalierDroite.setObjet(FabriqueObjet.creer(caseEscalierDroite, 'S'));
-        Case caseEscalierGauche = FabriqueCase.creer(caseEscalierMilieu.getCoordonnee().getVoisin(TypeMouvement.LEFT), 'H');
-        caseEscalierGauche.setObjet(FabriqueObjet.creer(caseEscalierGauche, 'S'));
+        Case caseEscalierMilieu = FabriqueCase.creer(coordonneeDepart.getVoisin(TypeMouvement.BOTTOM), 'S');
+        Case caseEscalierDroite = FabriqueCase.creer(caseEscalierMilieu.getCoordonnee().getVoisin(TypeMouvement.RIGHT), 'S');
+        Case caseEscalierGauche = FabriqueCase.creer(caseEscalierMilieu.getCoordonnee().getVoisin(TypeMouvement.LEFT), 'S');
         this.cases.replace(caseEscalierMilieu.getCoordonnee(), caseEscalierMilieu);
         this.cases.replace(caseEscalierDroite.getCoordonnee(), caseEscalierDroite);
         this.cases.replace(caseEscalierGauche.getCoordonnee(), caseEscalierGauche);

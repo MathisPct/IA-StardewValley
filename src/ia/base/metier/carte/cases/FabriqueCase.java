@@ -46,6 +46,10 @@ public class FabriqueCase {
             case 'H':
                 caseCree = new CaseHerbe(coordonnee);
                 break;
+            case 'S':
+                caseCree = new CaseHerbe(coordonnee);
+                caseCree.setObjet(FabriqueObjet.creer(caseCree, lettre));
+                break;
         }
         return caseCree;
     }
