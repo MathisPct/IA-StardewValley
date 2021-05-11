@@ -66,8 +66,15 @@ public class Module_Memoire extends Module  {
     }
     
     public void effectuerAction(Action action){
-        if(action.getType()== TypeAction.MOUVEMENT){
-            joueur.deplacer(action.getDirection());
+        if(action.getType() == TypeAction.MOUVEMENT) {
+            this.joueur.deplacer(action.getDirection()) ;
+        }
+        else if(action.getType() == TypeAction.RECOLTE) {
+            if(action.getDirection() != null) {
+                Case caseDestination = this.carte.getCase(this.getCaseJoueur().
+                getCoordonnee().getVoisin(action.getDirection())) ;
+                caseDestination.setObjet(null) ;
+            }
         }
     }
     

@@ -20,8 +20,8 @@ public class FabriqueAction {
     public static Action creerDemande(TypeDemande demande){
         ActionDemande action = null;
         switch(demande){
-            case MAP:
-                action = new ActionDemande("" + TypeDemande.MAP);
+            case CARTE:
+                action = new ActionDemande("MAP");
                 break;
         }
         return action;
@@ -37,6 +37,22 @@ public class FabriqueAction {
         switch(type){
             case DORMIR:
                 action = new ActionDormir();
+                break;
+        }
+        return action;
+    }
+    
+    /**
+     * Créer une action de récolte : arbre...
+     * @param type de l'action : récolter arbre, légumes...
+     * @param direction vers laquelle se trouve l'arbre
+     * @return l'action à réaliser
+     */
+    public static Action creerActionRecolte(TypeActionRecolte type, TypeMouvement direction){
+        Action action = null;
+        switch(type){
+            case COUPERARBRE:
+                action = new ActionCouperArbre(direction);
                 break;
         }
         return action;

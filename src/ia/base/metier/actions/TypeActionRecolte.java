@@ -6,9 +6,10 @@
 package ia.base.metier.actions;
 
 /**
- *
- * @author Mathis Poncet
+ * Enumération contenant le type d'actions que peut faire le joueur pour 
+ * récolter différents objets
+ * @author Mathis
  */
-public enum TypeDemande {
-    CARTE;
+public enum TypeActionRecolte {
+    COUPERARBRE;
 }
