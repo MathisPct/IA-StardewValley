@@ -25,8 +25,6 @@ public class ObjetMaison extends Objet{
     @Override
     public boolean estBloquant() {
         return true;
-    }
-    
-    
+    } 
     
 }

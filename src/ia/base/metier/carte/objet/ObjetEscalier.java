@@ -26,6 +26,5 @@ public class ObjetEscalier extends Objet{
     public boolean estBloquant() {
         return false;
     }
-    
-    
+ 
 }

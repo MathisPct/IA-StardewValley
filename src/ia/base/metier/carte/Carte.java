@@ -10,6 +10,7 @@ import ia.base.metier.carte.cases.Case;
 import ia.base.metier.carte.cases.FabriqueCase;
 import ia.base.metier.carte.cases.TypeCase;
 import ia.base.metier.carte.objet.FabriqueObjet;
+import java.util.Collection;
 import java.util.HashMap;
 
 /**
@@ -40,8 +41,11 @@ public class Carte {
         Case caseEscalierGauche = FabriqueCase.creer(caseEscalierMilieu.getCoordonnee().getVoisin(TypeMouvement.LEFT), 'H');
         caseEscalierGauche.setObjet(FabriqueObjet.creer(caseEscalierGauche, 'S'));
         this.cases.replace(caseEscalierMilieu.getCoordonnee(), caseEscalierMilieu);
-        this.cases.replace(caseEscalierDroite.getCoordonnee(), caseEscalierGauche);
+        this.cases.replace(caseEscalierDroite.getCoordonnee(), caseEscalierDroite);
         this.cases.replace(caseEscalierGauche.getCoordonnee(), caseEscalierGauche);
+        this.cases.put(caseEscalierGauche.getCoordonnee(), caseEscalierGauche);
+        this.cases.put(caseEscalierDroite.getCoordonnee(), caseEscalierDroite);
+        this.cases.put(caseEscalierMilieu.getCoordonnee(), caseEscalierMilieu);
         
         //Gestions des voisins
 	for(int i=0 ;i<this.taille ;i++) {
@@ -134,5 +138,15 @@ public class Carte {
      */
     public Case getCase(Coordonnee coordonnee){
         return this.cases.get(coordonnee);
+    }
+    
+    /**
+     * Fonction qui renvoie la liste des valeurs stockées dans la Hashmaps
+     * cases
+     * @return la liste des vlaeurs stcokées dans la Hashmap qui contient toutes
+     * les cases de la map
+     */
+    public Collection<Case> getCases(){
+        return this.cases.values();
     }
 }

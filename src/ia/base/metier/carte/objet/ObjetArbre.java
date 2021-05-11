@@ -21,12 +21,23 @@ public class ObjetArbre extends Objet{
     public TypeObjet getType() {
         return TypeObjet.ARBRE;
     }
-
+    
+    /** 
+     * Abigail peut casser l'arbre pour passer
+     * @return true car Abigail peut casser l'arbre
+     */
     @Override
     public boolean estBloquant() {
+        return false;
+    }
+
+    @Override
+    public boolean estRecoltable() {
         return true;
     }
     
-    
-    
+    @Override
+    public int coutRecolte(){
+        return 2;
+    } 
 }

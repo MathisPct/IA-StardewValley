@@ -30,4 +30,20 @@ public abstract class Objet {
      * objets
      */
     public abstract boolean estBloquant();
+    
+    /**
+     * Permet de savoir si un objet est récoltable par Abigail ou non
+     * @return true si l'objet est récoltable
+     */
+    public boolean estRecoltable(){
+        return false;
+    }
+    
+    /**
+     * Le coût de la récolte d'un objet
+     * @return par défaut -1 unité
+     */
+    public int coutRecolte(){
+        return -1;
+    }
 }
