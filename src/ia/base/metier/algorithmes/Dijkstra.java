@@ -9,6 +9,7 @@ import ia.base.metier.TypeMouvement;
 import ia.base.metier.carte.Carte;
 import ia.base.metier.carte.cases.Case;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 /**
@@ -113,8 +114,27 @@ public class Dijkstra extends AlgorithmeCalculDistance{
         }while(casePlusProche != null);
     }
     
+    /**
+     * Renvoie le chemin pour aller vers une case
+     * @param arrivee la case vers laquelle on veut aller 
+     * @return la suite de mouvement à faire
+     */
+    @Override
     public ArrayList<TypeMouvement> getChemin(Case arrivee){
-        return null;
+        //initialisation
+        ArrayList<TypeMouvement> mouvements = new ArrayList<>();
+        Case casePrecedente = null;
+        Case caseEnCours = arrivee;
+        //calcul
+        do{
+            casePrecedente = this.predecesseur.get(caseEnCours);
+            if(casePrecedente != null){
+                mouvements.add(casePrecedente.getMouvementPourAller(caseEnCours));
+                caseEnCours = casePrecedente;
+            }
+        }while(casePrecedente != null);
+        Collections.reverse(mouvements);
+        return mouvements;
     }
     
 }
