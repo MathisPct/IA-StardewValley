@@ -82,6 +82,7 @@ public class Module_Decision extends Module {
     }
     
     private void determinerNouvellesActions() {
+        /*
         ArrayList<Coordonnee> listeCoordonneeArbres = new ArrayList<>();
         for(Case c : this.getIA().getModuleMemoire().getCarte().getCases()) {
             if(c.getObjet() != null && c.getObjet().getType() == TypeObjet.ARBRE) {
@@ -92,7 +93,8 @@ public class Module_Decision extends Module {
         Random gen = new Random();
         if(listeCoordonneeArbres.size()>0) {
             this.seDeplacerEn(listeCoordonneeArbres.get(gen.nextInt(listeCoordonneeArbres.size())));
-        }
+        }*/
+        couperLArbreLePlusProche();
     }
     
     /**
@@ -124,4 +126,38 @@ public class Module_Decision extends Module {
         this.seDeplacerEn(getIA().getModuleMemoire().getCarte().getCoordonneeDepart());
         this.listeDesActionsARealiser.add(FabriqueAction.creerActionStatique(TypeActionStatique.DORMIR));
     } 
+    
+    /**
+     * Permet à Abigail de se déplacer et couper l'arbre le plus proche
+     */
+    private void couperLArbreLePlusProche(){
+        Dijkstra dijkstra = new Dijkstra(super.getIA().getModuleMemoire().getCarte());
+        dijkstra.calculerDistancesDepuis(super.getIA().getModuleMemoire().getCaseJoueur());
+        Case caseArbrePlusProche = null;
+        int distanceMinimale = -1;
+        for (Case c : super.getIA().getModuleMemoire().getCarte().getCases()) {
+            if(c.getObjet() != null && c.getObjet().getType() == TypeObjet.ARBRE){
+                if(caseArbrePlusProche == null || dijkstra.getDistance(c) < distanceMinimale){
+                    caseArbrePlusProche = c;
+                    distanceMinimale = dijkstra.getDistance(c);
+                }
+            }
+        }
+        if(caseArbrePlusProche != null){
+            seDeplacerEn(caseArbrePlusProche.getCoordonnee());
+            if(!this.listeDesActionsARealiser.isEmpty()) {
+                    Action action = this.listeDesActionsARealiser.get(this.listeDesActionsARealiser.size()-1);
+                    this.listeDesActionsARealiser.remove(this.listeDesActionsARealiser.size()-1);
+                    this.listeDesActionsARealiser.add(FabriqueAction.
+                    creerActionRecolte(TypeActionRecolte.COUPERARBRE, action.
+                    getDirection())) ;
+                    this.listeDesActionsARealiser.add(FabriqueAction.
+                    creerActionRecolte(TypeActionRecolte.COUPERARBRE, action.
+                    getDirection())) ;
+            }
+            /*if(!this.listeDesActionsARealiser.isEmpty()){
+                this.listeDesActionsARealiser.remove(this.listeDesActionsARealiser.size()-1);
+            }*/
+        }
+    }
 }
