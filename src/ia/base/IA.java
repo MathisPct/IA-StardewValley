@@ -36,10 +36,10 @@ public class IA {
     private void initialisation_Modules() {
         //Module de communication avec le serveur
         this.moduleCommunication = new Module_Communication(this);
-        //Module de prise de décision
-        this.moduleDecision = new Module_Decision(this);
         //Module de gestion de la mémoire
         this.moduleMemoire = new Module_Memoire(this);
+        //Module de prise de décision
+        this.moduleDecision = new Module_Decision(this);
         //Module de réaction aux messages du serveur
         this.moduleReaction = new Module_Reaction(this);
     }
