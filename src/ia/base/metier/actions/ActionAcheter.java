@@ -40,5 +40,9 @@ public class ActionAcheter extends Action{
     public TypeMouvement getDirection() {
         return null;
     }
-    
+
+    @Override
+    public TypeRessource getTypeRessource() {
+        return typeRessource;
+    }
 }

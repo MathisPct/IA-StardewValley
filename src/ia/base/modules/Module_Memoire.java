@@ -102,9 +102,15 @@ public class Module_Memoire extends Module  {
         }else if(action.getType() == TypeAction.TYPESTATIQUE){
             this.stockMagasin = null;
         }else if(action.getType() == TypeAction.ACHAT){
-            this.inventaire.put(TypeRessource.GOLD, inventaire.get(TypeRessource.GOLD) - 20);
-            this.inventaire.put(TypeRessource.PARSNIPSEED, inventaire.get(TypeRessource.PARSNIPSEED) + 1);
-            this.stockMagasin.put(TypeRessource.PARSNIPSEED, stockMagasin.get(TypeRessource.PARSNIPSEED));
+            if(action.getTypeRessource() == TypeRessource.PARSNIPSEED){
+                this.inventaire.put(TypeRessource.GOLD, inventaire.get(TypeRessource.GOLD) - 20);
+                this.inventaire.put(TypeRessource.PARSNIPSEED, inventaire.get(TypeRessource.PARSNIPSEED) + 1);
+                this.stockMagasin.put(TypeRessource.PARSNIPSEED, stockMagasin.get(TypeRessource.PARSNIPSEED) - 1 );
+            }else if(action.getTypeRessource() == TypeRessource.CAULIFLOWERSEED){
+                this.inventaire.put(TypeRessource.GOLD, inventaire.get(TypeRessource.GOLD) - 80);
+                this.inventaire.put(TypeRessource.CAULIFLOWERSEED, inventaire.get(TypeRessource.CAULIFLOWERSEED) + 1);
+                this.stockMagasin.put(TypeRessource.CAULIFLOWERSEED, stockMagasin.get(TypeRessource.CAULIFLOWERSEED) - 1);
+            }
         }
     }
     
