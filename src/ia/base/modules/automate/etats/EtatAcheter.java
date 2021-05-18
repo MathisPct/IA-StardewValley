@@ -10,21 +10,20 @@ import ia.base.modules.automate.Automate;
 import ia.base.modules.automate.Etat;
 
 /**
- * Regarde si une action est déjà planifiée
+ * Va acheter des graines
  * @author Mathis Poncet
  */
-public class EtatCheckAction extends Etat{
+public class EtatAcheter extends Etat{
 
-    public EtatCheckAction(Automate automate) {
+    public EtatAcheter(Automate automate) {
         super(automate);
     }
 
     @Override
     public Etat transition() {
-        Etat etat = new EtatRealiserAction(getAutomate());
-        if (getAutomate().getListeDesActionsARealiser().isEmpty()){
-            //etat = new EtatAllerVersArbre(getAutomate());
-            etat = new EtatAcheter(getAutomate());
+        Etat etat = new EtatDemandeMagasin(this.getAutomate());
+        if(super.getAutomate().getModuleMemoire().hasStockMagasin()){
+            etat = new EtatAllerDormir(getAutomate());
         }
         return etat;
     }

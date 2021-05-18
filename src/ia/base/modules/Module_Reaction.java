@@ -26,6 +26,9 @@ public class Module_Reaction extends Module {
             case "MAP":
                 reactionCarte(messageRecu);
                 break;
+            case "STORE":
+                reactionMagasin(messageRecu);
+                break;
         }
     }
     
@@ -36,5 +39,15 @@ public class Module_Reaction extends Module {
     public void reactionCarte(String messageRecu){
         this.getIA().getModuleMemoire().genererCarte(messageRecu);
     }
-
+    
+    /**
+     * Réaction lors de la réception des informations des ressources contenues
+     * dans le magasin
+     * @param messageRecu la chaine de caractère représentant le contenu 
+     * du magasin
+     */
+    private void reactionMagasin(String messageRecu){
+        String[] graines = messageRecu.split("\\|");
+        this.getIA().getModuleMemoire().genererStockMagasin(Integer.parseInt(graines[0]), Integer.parseInt(graines[1]));
+    }
 }

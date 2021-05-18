@@ -6,6 +6,8 @@
 package ia.base.metier.carte.objet;
 
 import ia.base.metier.carte.cases.Case;
+import ia.base.metier.carte.ressources.TypeRessource;
+import java.util.HashMap;
 
 /**
  *
@@ -25,6 +27,11 @@ public class ObjetEscalier extends Objet{
     @Override
     public boolean estBloquant() {
         return false;
+    }
+
+    @Override
+    public HashMap<TypeRessource, Integer> getLoot() {
+        return new HashMap<>();
     }
  
 }

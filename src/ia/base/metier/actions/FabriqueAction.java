@@ -23,6 +23,9 @@ public class FabriqueAction {
             case CARTE:
                 action = new ActionDemande("MAP");
                 break;
+            case MAGASIN:
+                action = new ActionDemande("STORE");
+                break;
         }
         return action;
     }

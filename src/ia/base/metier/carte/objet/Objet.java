@@ -6,6 +6,8 @@
 package ia.base.metier.carte.objet;
 
 import ia.base.metier.carte.cases.Case;
+import ia.base.metier.carte.ressources.TypeRessource;
+import java.util.HashMap;
 
 /**
  *
@@ -46,4 +48,12 @@ public abstract class Objet {
     public int coutRecolte(){
         return -1;
     }
+    
+    /**
+     * Méthode spécifiant la quantité d'une ressource pouvant être récupéré sur 
+     * une case
+     * @return une hashmap mettant en relation une ressource et sa quantité 
+     * respective
+     */
+    public abstract HashMap<TypeRessource, Integer> getLoot();
 }

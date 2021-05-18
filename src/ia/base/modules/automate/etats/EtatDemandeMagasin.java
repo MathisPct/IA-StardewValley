@@ -5,33 +5,32 @@
  */
 package ia.base.modules.automate.etats;
 
+import ia.base.metier.TypeMouvement;
 import ia.base.metier.actions.Action;
+import ia.base.metier.actions.FabriqueAction;
+import ia.base.metier.actions.TypeActionRecolte;
+import ia.base.metier.actions.TypeDemande;
 import ia.base.modules.automate.Automate;
 import ia.base.modules.automate.Etat;
 
 /**
- * Regarde si une action est déjà planifiée
+ * Demande le stock du magasin
  * @author Mathis Poncet
  */
-public class EtatCheckAction extends Etat{
+public class EtatDemandeMagasin extends Etat{
 
-    public EtatCheckAction(Automate automate) {
+    public EtatDemandeMagasin(Automate automate) {
         super(automate);
     }
 
     @Override
     public Etat transition() {
-        Etat etat = new EtatRealiserAction(getAutomate());
-        if (getAutomate().getListeDesActionsARealiser().isEmpty()){
-            //etat = new EtatAllerVersArbre(getAutomate());
-            etat = new EtatAcheter(getAutomate());
-        }
-        return etat;
+        return new EtatCheckAction(this.getAutomate());
     }
 
     @Override
     public Action action() {
-        return null;
+        return FabriqueAction.creerDemande(TypeDemande.MAGASIN);
     }
     
 }

@@ -10,28 +10,23 @@ import ia.base.modules.automate.Automate;
 import ia.base.modules.automate.Etat;
 
 /**
- * Regarde si une action est déjà planifiée
+ * Va remplir l'arrosoir
  * @author Mathis Poncet
  */
-public class EtatCheckAction extends Etat{
+public class EtatAllerRemplir extends Etat{
 
-    public EtatCheckAction(Automate automate) {
+    public EtatAllerRemplir(Automate automate) {
         super(automate);
     }
 
     @Override
     public Etat transition() {
-        Etat etat = new EtatRealiserAction(getAutomate());
-        if (getAutomate().getListeDesActionsARealiser().isEmpty()){
-            //etat = new EtatAllerVersArbre(getAutomate());
-            etat = new EtatAcheter(getAutomate());
-        }
-        return etat;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Action action() {
-        return null;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

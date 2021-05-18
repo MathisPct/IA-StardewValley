@@ -6,6 +6,8 @@
 package ia.base.metier.carte.objet;
 
 import ia.base.metier.carte.cases.Case;
+import ia.base.metier.carte.ressources.TypeRessource;
+import java.util.HashMap;
 
 /**
  *
@@ -26,5 +28,10 @@ public class ObjetMaison extends Objet{
     public boolean estBloquant() {
         return true;
     } 
+
+    @Override
+    public HashMap<TypeRessource, Integer> getLoot() {
+        return new HashMap<>();
+    }
     
 }

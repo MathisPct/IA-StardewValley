@@ -6,6 +6,9 @@
 package ia.base.metier.carte.objet;
 
 import ia.base.metier.carte.cases.Case;
+import ia.base.metier.carte.ressources.TypeRessource;
+import java.util.Collections;
+import java.util.HashMap;
 
 /**
  *
@@ -40,4 +43,11 @@ public class ObjetArbre extends Objet{
     public int coutRecolte(){
         return 2;
     } 
+
+    @Override
+    public HashMap<TypeRessource, Integer> getLoot() {
+        HashMap<TypeRessource, Integer> arbres = new HashMap<>();
+        arbres.put(TypeRessource.BOIS, 12);
+        return arbres;
+    }
 }
