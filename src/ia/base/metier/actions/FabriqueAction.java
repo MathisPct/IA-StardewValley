@@ -6,6 +6,7 @@
 package ia.base.metier.actions;
 
 import ia.base.metier.TypeMouvement;
+import ia.base.metier.carte.ressources.TypeRessource;
 
 /**
  *
@@ -57,6 +58,27 @@ public class FabriqueAction {
             case COUPERARBRE:
                 action = new ActionCouperArbre(direction);
                 break;
+        }
+        return action;
+    }
+    
+    /**
+     * Créer une action d'achat d'un ressource
+     * @param typeRessource que l'on souhaite acheter
+     * @return l'action d'achat à réaliser
+     */
+    public static Action creerActionAcheter(TypeRessource typeRessource){
+        Action action = null;
+        switch(typeRessource){
+            case PARSNIPSEED:
+                action = new ActionAcheter(TypeRessource.PARSNIPSEED);
+                break;
+            case CAULIFLOWERSEED:
+                action = new ActionAcheter(TypeRessource.CAULIFLOWERSEED);
+                break;
+            case CHICKEN:
+                action = new ActionAcheter(TypeRessource.CHICKEN);
+                break;                
         }
         return action;
     }

@@ -10,6 +10,7 @@ import ia.base.metier.carte.cases.Case;
 import ia.base.metier.carte.cases.FabriqueCase;
 import ia.base.metier.carte.cases.TypeCase;
 import ia.base.metier.carte.objet.FabriqueObjet;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -25,6 +26,11 @@ public class Carte {
      */
     private Coordonnee coordonneeDepart;
     
+    /**
+     * Coordonnées des cases où se trouve le magasin
+     */
+    private ArrayList<Coordonnee> coordonneesMagasin;
+    
     public Carte(String messageRecu){
         this.cases = new HashMap<>();
         this.taille = (int) Math.sqrt(messageRecu.length());
@@ -33,6 +39,11 @@ public class Carte {
                 this.ajouterCase(new Coordonnee(i, j), messageRecu.charAt(j+this.taille*i));
             }
         }
+        
+        //détermination des coordonnées de l'emplacement du magasin
+        this.coordonneesMagasin = new ArrayList<>();
+        this.coordonneesMagasin.add(0, new Coordonnee(coordonneeDepart.getLigne()+2, coordonneeDepart.getColonne() -4));
+        this.coordonneesMagasin.add(1, new Coordonnee(coordonneeDepart.getLigne()+2, coordonneeDepart.getColonne() -3));
         
         Case caseEscalierMilieu = FabriqueCase.creer(coordonneeDepart.getVoisin(TypeMouvement.BOTTOM), 'S');
         Case caseEscalierDroite = FabriqueCase.creer(caseEscalierMilieu.getCoordonnee().getVoisin(TypeMouvement.RIGHT), 'S');
@@ -145,5 +156,9 @@ public class Carte {
      */
     public Collection<Case> getCases(){
         return this.cases.values();
+    }
+
+    public ArrayList<Coordonnee> getCoordonneesMagasin() {
+        return coordonneesMagasin;
     }
 }

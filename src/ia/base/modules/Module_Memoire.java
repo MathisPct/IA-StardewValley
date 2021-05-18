@@ -101,6 +101,10 @@ public class Module_Memoire extends Module  {
             }
         }else if(action.getType() == TypeAction.TYPESTATIQUE){
             this.stockMagasin = null;
+        }else if(action.getType() == TypeAction.ACHAT){
+            this.inventaire.put(TypeRessource.GOLD, inventaire.get(TypeRessource.GOLD) - 20);
+            this.inventaire.put(TypeRessource.PARSNIPSEED, inventaire.get(TypeRessource.PARSNIPSEED) + 1);
+            this.stockMagasin.put(TypeRessource.PARSNIPSEED, stockMagasin.get(TypeRessource.PARSNIPSEED));
         }
     }
     
@@ -156,5 +160,15 @@ public class Module_Memoire extends Module  {
             res = false;
         }
         return res;
+    }
+    
+    /**
+     * Permet de savoir la quantité d'une ressource que possède le magasin
+     * @param type de ressource dont on veut savoir la quantité
+     * @return la quantité de la ressource passée en paramètre présente dans 
+     * le magasin
+     */
+    public int getStockMagasin(TypeRessource type){
+        return this.stockMagasin.get(type);
     }
 }
