@@ -31,7 +31,7 @@ public class EtatAllerPlanter extends Etat{
     public Etat transition() {
         Etat etat = new EtatCheckAction(getAutomate());
         if(!aPlante){
-            etat = new EtatAllerDormir(getAutomate());
+            etat = new EtatAllerArroser(getAutomate());
         }
         return etat;
     }

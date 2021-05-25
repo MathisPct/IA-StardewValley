@@ -14,9 +14,14 @@ import java.util.HashMap;
  * @author Mathis Poncet
  */
 public class Plante extends Objet{
-
+    /**
+     * Permet de savoir si une plante est arrosée ou non
+     */
+    private boolean estArrose;
+    
     public Plante(Case postion) {
         super(postion);
+        this.estArrose = false;
     }
 
     @Override
@@ -37,5 +42,12 @@ public class Plante extends Objet{
     public HashMap<TypeRessource, Integer> getLoot() {
         return null;
     }
-    
+
+    public boolean isEstArrose() {
+        return estArrose;
+    }
+
+    public void setEstArrose(boolean estArrose) {
+        this.estArrose = estArrose;
+    }
 }

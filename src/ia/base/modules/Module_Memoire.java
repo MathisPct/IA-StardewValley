@@ -59,6 +59,7 @@ public class Module_Memoire extends Module  {
                 inventaire.put(ressource, 500);
             }
         }
+        this.inventaire.put(TypeRessource.EAU, 20);
         this.listePlantes = new ArrayList<>();
     }
     
@@ -111,6 +112,9 @@ public class Module_Memoire extends Module  {
             }
         }else if(action.getType() == TypeAction.TYPESTATIQUE){
             this.stockMagasin = null;
+            for (Plante p : listePlantes) {
+                p.setEstArrose(false);
+            }
         }else if(action.getType() == TypeAction.ACHAT){
             if(action.getTypeRessource() == TypeRessource.PARSNIPSEED){
                 this.inventaire.put(TypeRessource.GOLD, inventaire.get(TypeRessource.GOLD) - 20);
@@ -124,6 +128,15 @@ public class Module_Memoire extends Module  {
         }else if(action.getType() == TypeAction.PLANTER){
             addPlante(TypeObjet.PANAIS);
             this.inventaire.put(TypeRessource.PARSNIPSEED, inventaire.get(TypeRessource.PARSNIPSEED) - 1);
+        }else if(action.getType() == TypeAction.ARROSER){
+            this.inventaire.put(TypeRessource.EAU, inventaire.get(TypeRessource.EAU) - 1);
+            for (Plante p : listePlantes) {
+                if(p.getPosition() == getCaseJoueur()){
+                    p.setEstArrose(true);
+                }
+            }
+        }else if(action.getType() == TypeAction.REMPLIR){
+            this.inventaire.put(TypeRessource.EAU, 20);
         }
     }
     
@@ -141,9 +154,16 @@ public class Module_Memoire extends Module  {
      * l'affecter à notre inventaire
      */
     private void recolter(Objet objet){
-        if(objet != null){
-            this.inventaire.putAll(objet.getLoot());
+        if(objet != null){ 
+            for (TypeRessource ressourceInven: inventaire.keySet()) {
+                for (TypeRessource ressourceObjet : objet.getLoot().keySet()) {
+                   if(ressourceInven == ressourceObjet){
+                       this.inventaire.put(ressourceObjet, inventaire.get(ressourceObjet) + objet.getLoot().get(ressourceObjet));
+                   } 
+                }
+            }
         }
+        
     }
     
     /**

@@ -100,4 +100,36 @@ public class FabriqueAction {
         }
         return action;
     }
+    
+    /**
+     * Permet de créer l'action arroser
+     * @return l'action à effectuer pour arroser
+     */
+    public static Action creerActionArroser(){
+        return new ActionArroser();
+    }
+    
+    /**
+     * Permet de créer une action de remplissage d'arrosoir
+     * @param direction 
+     * @return 
+     */
+    public static Action creerActionRemplir(TypeMouvement direction){
+        Action action = null;
+        switch(direction){
+            case TOP:
+                action = new ActionRemplir(TypeMouvement.TOP);
+                break;
+            case BOTTOM:
+                action = new ActionRemplir(TypeMouvement.BOTTOM);
+                break;
+            case LEFT:
+                action = new ActionRemplir(TypeMouvement.LEFT);
+                break;
+            case RIGHT:
+                action = new ActionRemplir(TypeMouvement.RIGHT);
+                break;
+        }
+        return action;
+    }
 }

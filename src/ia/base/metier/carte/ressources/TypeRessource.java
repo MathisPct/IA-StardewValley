@@ -11,6 +11,14 @@ package ia.base.metier.carte.ressources;
  * Type de ressources présentes dans le jeu
  */
 public enum TypeRessource {
-    GOLD,BOIS,PARSNIPSEED,PARSNIPMATURE,CAULIFLOWERSEED,CAULIFLOWERMATURE,CHICKEN,
-    EGG,MAYONNAISE;
+    GOLD,
+    BOIS,
+    PARSNIPSEED,
+    PARSNIPMATURE,
+    CAULIFLOWERSEED,
+    CAULIFLOWERMATURE,
+    CHICKEN,
+    EGG,
+    MAYONNAISE,
+    EAU;
 }
