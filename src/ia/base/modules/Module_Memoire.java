@@ -8,8 +8,12 @@ import ia.base.metier.carte.Carte;
 import ia.base.metier.carte.Coordonnee;
 import ia.base.metier.carte.cases.Case;
 import ia.base.metier.carte.cases.TypeCase;
+import ia.base.metier.carte.objet.FabriqueObjet;
 import ia.base.metier.carte.objet.Objet;
+import ia.base.metier.carte.objet.Plante;
+import ia.base.metier.carte.objet.TypeObjet;
 import ia.base.metier.carte.ressources.TypeRessource;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -34,6 +38,11 @@ public class Module_Memoire extends Module  {
     private HashMap<TypeRessource, Integer> stockMagasin;
     
     /**
+     * Liste des plantes que l'ia a récolté
+     */
+    private ArrayList<Plante> listePlantes;
+    
+    /**
      * Constructeur
      * @param ia l'IA dont ce module fait partie
      */
@@ -50,6 +59,7 @@ public class Module_Memoire extends Module  {
                 inventaire.put(ressource, 500);
             }
         }
+        this.listePlantes = new ArrayList<>();
     }
     
     /**
@@ -111,6 +121,9 @@ public class Module_Memoire extends Module  {
                 this.inventaire.put(TypeRessource.CAULIFLOWERSEED, inventaire.get(TypeRessource.CAULIFLOWERSEED) + 1);
                 this.stockMagasin.put(TypeRessource.CAULIFLOWERSEED, stockMagasin.get(TypeRessource.CAULIFLOWERSEED) - 1);
             }
+        }else if(action.getType() == TypeAction.PLANTER){
+            addPlante(TypeObjet.PANAIS);
+            this.inventaire.put(TypeRessource.PARSNIPSEED, inventaire.get(TypeRessource.PARSNIPSEED) - 1);
         }
     }
     
@@ -176,5 +189,30 @@ public class Module_Memoire extends Module  {
      */
     public int getStockMagasin(TypeRessource type){
         return this.stockMagasin.get(type);
+    }
+    
+    /**
+     * demande d'ajouter une plante à la carte
+     * @param type de la plante 
+     */
+    private void addPlante(TypeObjet type){
+        Plante plante = FabriqueObjet.creerPlante(getCaseJoueur(), type);
+        this.listePlantes.add(plante);
+        getCaseJoueur().setObjet(plante);
+    }
+    
+    /**
+     * Récolte l'objet situé à la case du joueur, le retire de la 
+     * liste des plantes et supprime l'objet de la case
+     * 
+     */
+    private void recolterPlante(){
+        Case c = getCarte().getCase(getCaseJoueur().getCoordonnee());
+        this.listePlantes.remove(c.getObjet());
+        getCarte().getCase(c.getCoordonnee()).setObjet(null);
+    }
+
+    public ArrayList<Plante> getListePlantes() {
+        return listePlantes;
     }
 }

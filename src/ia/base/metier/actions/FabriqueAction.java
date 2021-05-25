@@ -82,4 +82,22 @@ public class FabriqueAction {
         }
         return action;
     }
+    
+    /**
+     * Créer une action permettant d'aller planter des graines
+     * @param typeRessource le type de graine à planter
+     * @return l'action à faire
+     */
+    public static Action creerActionPlanter(TypeRessource typeRessource){
+        Action action = null;
+        switch(typeRessource){
+            case CAULIFLOWERSEED:
+                action = new ActionPlanter(typeRessource);
+                break;
+            case PARSNIPSEED:
+                action = new ActionPlanter(typeRessource);
+                break;
+        }
+        return action;
+    }
 }

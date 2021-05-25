@@ -39,4 +39,22 @@ public class FabriqueObjet {
         return objet;
     }
    
+    /**
+     * Rajoute une plante à une case
+     * @param position la case terre où on veut planter les graines
+     * @param type de la graine à planter
+     * @return la plante qui a été planté
+     */
+    public static Plante creerPlante(Case position, TypeObjet type){
+        Plante plante = null;
+        switch(type){
+            case CHOUFLEUR:
+                plante = new PlanteChouFleur(position);
+                break;
+            case PANAIS:
+                plante = new PlantePanais(position);
+                break;
+        }
+        return plante;
+    }
 }

@@ -10,5 +10,5 @@ package ia.base.metier.actions;
  * @author math7
  */
 public enum TypeAction {
-    DEMANDE, MOUVEMENT, TYPESTATIQUE, RECOLTE, ACHAT;
+    DEMANDE, MOUVEMENT, TYPESTATIQUE, RECOLTE, ACHAT, PLANTER;
 }

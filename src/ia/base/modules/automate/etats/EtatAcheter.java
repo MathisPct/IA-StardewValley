@@ -36,7 +36,7 @@ public class EtatAcheter extends Etat{
             if(vaAcheter){
                 etat = new EtatCheckAction(getAutomate());
             }else{
-                etat = new EtatAllerDormir(getAutomate());
+                etat = new EtatAllerPlanter(getAutomate());
             }
         }
         return etat;
