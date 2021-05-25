@@ -31,4 +31,13 @@ public class PlanteChouFleur extends Plante{
         return TypeObjet.CHOUFLEUR;
     }
     
+    @Override
+    public boolean estMature() {
+        boolean estMature = false;
+        if(getAge() >= 13){
+            estMature = true;
+        }
+        return estMature;
+    }
+    
 }

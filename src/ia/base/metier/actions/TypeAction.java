@@ -17,5 +17,7 @@ public enum TypeAction {
     ACHAT, 
     PLANTER, 
     ARROSER,
-    REMPLIR;
+    REMPLIR,
+    GRANDIR,
+    CUEILLIR;
 }

@@ -132,4 +132,12 @@ public class FabriqueAction {
         }
         return action;
     }
+    
+    /**
+     * Permet de créer une action de cueillette
+     * @return l'action de cueillette
+     */
+    public static Action creerActionCueillir(){
+        return new ActionCueillir();
+    }
 }

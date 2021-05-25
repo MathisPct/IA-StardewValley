@@ -13,15 +13,21 @@ import java.util.HashMap;
  *
  * @author Mathis Poncet
  */
-public class Plante extends Objet{
+public abstract class Plante extends Objet{
     /**
      * Permet de savoir si une plante est arrosée ou non
      */
     private boolean estArrose;
     
+    /**
+     * Permet de connaître l'âge d'une plante afin de gérer sa maturité
+     */
+    private int age;
+    
     public Plante(Case postion) {
         super(postion);
         this.estArrose = false;
+        this.age = 0;
     }
 
     @Override
@@ -49,5 +55,22 @@ public class Plante extends Objet{
 
     public void setEstArrose(boolean estArrose) {
         this.estArrose = estArrose;
+    }
+    
+    /**
+     * Augmente de 1 l'âge de la plante
+     */
+    public void grandir(){
+        age ++;
+    }
+    
+    /**
+     * Permet de savoir si une plante est mature ou non 
+     * @return true si elle est mature
+     */
+    public abstract boolean estMature();
+    
+    protected int getAge(){
+        return this.age;
     }
 }

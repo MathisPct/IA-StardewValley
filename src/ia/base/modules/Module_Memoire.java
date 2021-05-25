@@ -113,6 +113,7 @@ public class Module_Memoire extends Module  {
         }else if(action.getType() == TypeAction.TYPESTATIQUE){
             this.stockMagasin = null;
             for (Plante p : listePlantes) {
+                p.grandir(); //permet de faire grandir la plante
                 p.setEstArrose(false);
             }
         }else if(action.getType() == TypeAction.ACHAT){
@@ -137,6 +138,8 @@ public class Module_Memoire extends Module  {
             }
         }else if(action.getType() == TypeAction.REMPLIR){
             this.inventaire.put(TypeRessource.EAU, 20);
+        }else if(action.getType() == TypeAction.CUEILLIR){
+            recolterPlante();
         }
     }
     
@@ -228,6 +231,7 @@ public class Module_Memoire extends Module  {
      */
     private void recolterPlante(){
         Case c = getCarte().getCase(getCaseJoueur().getCoordonnee());
+        recolter(c.getObjet());
         this.listePlantes.remove(c.getObjet());
         getCarte().getCase(c.getCoordonnee()).setObjet(null);
     }

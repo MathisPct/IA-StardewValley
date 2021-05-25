@@ -30,4 +30,13 @@ public class PlantePanais extends Plante{
     public TypeObjet getType() {
         return TypeObjet.PANAIS;
     }
+    
+    @Override
+    public boolean estMature() {
+        boolean estMature = false;
+        if(getAge() >= 5){
+            estMature = true;
+        }
+        return estMature;
+    }
 }
