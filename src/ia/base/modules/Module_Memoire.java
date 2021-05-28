@@ -127,8 +127,13 @@ public class Module_Memoire extends Module  {
                 this.stockMagasin.put(TypeRessource.CAULIFLOWERSEED, stockMagasin.get(TypeRessource.CAULIFLOWERSEED) - 1);
             }
         }else if(action.getType() == TypeAction.PLANTER){
-            addPlante(TypeObjet.PANAIS);
-            this.inventaire.put(TypeRessource.PARSNIPSEED, inventaire.get(TypeRessource.PARSNIPSEED) - 1);
+            if(action.getTypeRessource() == TypeRessource.PARSNIPSEED){
+                addPlante(TypeObjet.PANAIS);
+                this.inventaire.put(TypeRessource.PARSNIPSEED, inventaire.get(TypeRessource.PARSNIPSEED) - 1);
+            }else if(action.getTypeRessource() == TypeRessource.CAULIFLOWERSEED){
+                addPlante(TypeObjet.CHOUFLEUR);
+                this.inventaire.put(TypeRessource.CAULIFLOWERSEED, inventaire.get(TypeRessource.CAULIFLOWERSEED) - 1);
+            }
         }else if(action.getType() == TypeAction.ARROSER){
             this.inventaire.put(TypeRessource.EAU, inventaire.get(TypeRessource.EAU) - 1);
             for (Plante p : listePlantes) {
@@ -140,6 +145,14 @@ public class Module_Memoire extends Module  {
             this.inventaire.put(TypeRessource.EAU, 20);
         }else if(action.getType() == TypeAction.CUEILLIR){
             recolterPlante();
+        }else if(action.getType() == TypeAction.VENTE){
+            if(action.getTypeRessource() == TypeRessource.PARSNIPMATURE){
+                this.inventaire.put(TypeRessource.GOLD, inventaire.get(TypeRessource.GOLD) + 35);
+                this.inventaire.put(TypeRessource.PARSNIPMATURE, inventaire.get(TypeRessource.PARSNIPMATURE) - 1);
+            }else if(action.getTypeRessource() == TypeRessource.CAULIFLOWERMATURE){
+                this.inventaire.put(TypeRessource.GOLD, inventaire.get(TypeRessource.GOLD) + 175);
+                this.inventaire.put(TypeRessource.CAULIFLOWERMATURE, inventaire.get(TypeRessource.CAULIFLOWERMATURE) - 1);
+            }
         }
     }
     

@@ -38,7 +38,7 @@ public class EtatAllerPlanter extends Etat{
 
     @Override
     public Action action() {
-        if(super.getAutomate().getModuleMemoire().getQuantiteRessource(TypeRessource.PARSNIPSEED) >= 1){
+        if(super.getAutomate().getModuleMemoire().getQuantiteRessource(TypeRessource.PARSNIPSEED) >= 1 || super.getAutomate().getModuleMemoire().getQuantiteRessource(TypeRessource.CAULIFLOWERSEED) >= 1){
             Dijkstra dijkstra = new Dijkstra(getAutomate().getModuleMemoire().getCarte());
             dijkstra.calculerDistancesDepuis(getAutomate().getModuleMemoire().getCaseJoueur());
             Case caseTerreVide = null;
@@ -54,7 +54,8 @@ public class EtatAllerPlanter extends Etat{
             }
             if(caseTerreVide != null){
                 seDeplacerEn(caseTerreVide.getCoordonnee());
-                getAutomate().getListeDesActionsARealiser().add(FabriqueAction.creerActionPlanter(TypeRessource.PARSNIPSEED));
+                if(super.getAutomate().getModuleMemoire().getQuantiteRessource(TypeRessource.PARSNIPSEED) >=1 ) getAutomate().getListeDesActionsARealiser().add(FabriqueAction.creerActionPlanter(TypeRessource.PARSNIPSEED));
+                else if(super.getAutomate().getModuleMemoire().getQuantiteRessource(TypeRessource.CAULIFLOWERSEED) >=1 ) getAutomate().getListeDesActionsARealiser().add(FabriqueAction.creerActionPlanter(TypeRessource.CAULIFLOWERSEED));
                 aPlante = true;
             }
         }

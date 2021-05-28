@@ -44,9 +44,11 @@ public class EtatAcheter extends Etat{
 
     @Override
     public Action action() {
+        Action action = null;
         if(getAutomate().getModuleMemoire().hasStockMagasin()){
             if(getAutomate().getModuleMemoire().getQuantiteRessource(TypeRessource.GOLD) >= 20){
-                if(getAutomate().getModuleMemoire().getStockMagasin(TypeRessource.PARSNIPSEED) >= 1){
+                //si le magasin possède suffisamment de stock de graine de panais ou de chois
+                if(getAutomate().getModuleMemoire().getStockMagasin(TypeRessource.PARSNIPSEED) >= 1 || (getAutomate().getModuleMemoire().getStockMagasin(TypeRessource.CAULIFLOWERSEED) >=1 && getAutomate().getModuleMemoire().getQuantiteRessource(TypeRessource.GOLD) >= 80)){
                     Dijkstra dijkstra = new Dijkstra(getAutomate().getModuleMemoire().getCarte());
                     dijkstra.calculerDistancesDepuis(getAutomate().getModuleMemoire().getCaseJoueur());
                     Case caseMagasinGauche = new CaseHerbe(getAutomate().getModuleMemoire().getCarte().getCoordonneesMagasin().get(0));
@@ -61,10 +63,23 @@ public class EtatAcheter extends Etat{
                             }
                         }
                     }
-                    this.vaAcheter = true;
                     seDeplacerEn(caseMagasinPlusProche.getCoordonnee());
-                    Action action = FabriqueAction.creerActionAcheter(TypeRessource.PARSNIPSEED);
-                    getAutomate().getListeDesActionsARealiser().add(action);
+                    this.vaAcheter = true;
+                    //si il reste des graines de panais 
+                    if(getAutomate().getModuleMemoire().getStockMagasin(TypeRessource.PARSNIPSEED) >= 1){
+                        action = FabriqueAction.creerActionAcheter(TypeRessource.PARSNIPSEED);
+                    }
+                    //sinon on vérifie nos golds si on peut acheter des graines de choux fleurs 
+                    else{  
+                        if(getAutomate().getModuleMemoire().getQuantiteRessource(TypeRessource.GOLD) >= 80)
+                        action = FabriqueAction.creerActionAcheter(TypeRessource.CAULIFLOWERSEED); 
+                    }
+                    if(action==null){
+                        this.vaAcheter = false;
+                    }else{
+                        getAutomate().getListeDesActionsARealiser().add(action);
+                    }
+                    
                 }
             }
         }

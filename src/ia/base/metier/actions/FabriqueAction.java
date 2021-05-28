@@ -84,6 +84,27 @@ public class FabriqueAction {
     }
     
     /**
+     * Créer une action de vente d'une ressource
+     * @param typeRessource que l'on souhaite vendre
+     * @return l'action de vente de la ressource à réaliser
+     */
+    public static Action creerActionVendre(TypeRessource typeRessource){
+        Action action = null;
+        switch(typeRessource){
+            case PARSNIPMATURE:
+                action = new ActionVendre(TypeRessource.PARSNIPMATURE);
+                break;
+            case CAULIFLOWERMATURE:
+                action = new ActionVendre(TypeRessource.CAULIFLOWERMATURE);
+                break;
+            case CHICKEN:
+                action = new ActionVendre(TypeRessource.CHICKEN);
+                break;    
+        }
+        return action;
+    }
+    
+    /**
      * Créer une action permettant d'aller planter des graines
      * @param typeRessource le type de graine à planter
      * @return l'action à faire

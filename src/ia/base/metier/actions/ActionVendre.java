@@ -9,31 +9,31 @@ import ia.base.metier.TypeMouvement;
 import ia.base.metier.carte.ressources.TypeRessource;
 
 /**
- * Action servant à planter des graines 
+ * Permet de vendre des ressources
  * @author Mathis Poncet
  */
-public class ActionPlanter extends Action{
+public class ActionVendre extends Action{
     /**
-     * Type de graine palntée 
+     * Le type de ressource que l'on souaite vendre dans le magasin
      */
-    private TypeRessource graine;
-
+    private TypeRessource typeRessource;
+    
     /**
      * Constructeur par initialisation
-     * @param graine à planter par l'ia
+     * @param typeRessource que l'on souhaite vendre dans le magasin
      */
-    public ActionPlanter(TypeRessource graine) {
-        this.graine = graine;
+    public ActionVendre(TypeRessource typeRessource) {
+        this.typeRessource = typeRessource;
     }
     
     @Override
     public String getMessage() {
-        return "PLANT|" + graine;
+        return "SELL|" + typeRessource + "|1";
     }
 
     @Override
     public TypeAction getType() {
-        return TypeAction.PLANTER;
+        return TypeAction.VENTE;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class ActionPlanter extends Action{
 
     @Override
     public TypeRessource getTypeRessource() {
-        return graine;
+        return typeRessource;
     }
     
 }

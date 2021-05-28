@@ -15,6 +15,7 @@ public enum TypeAction {
     TYPESTATIQUE, 
     RECOLTE, 
     ACHAT, 
+    VENTE,
     PLANTER, 
     ARROSER,
     REMPLIR,

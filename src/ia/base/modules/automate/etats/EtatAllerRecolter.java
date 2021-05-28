@@ -10,6 +10,7 @@ import ia.base.metier.actions.FabriqueAction;
 import ia.base.metier.algorithmes.Dijkstra;
 import ia.base.metier.carte.cases.Case;
 import ia.base.metier.carte.objet.Plante;
+import ia.base.metier.carte.ressources.TypeRessource;
 import ia.base.modules.automate.Automate;
 import ia.base.modules.automate.Etat;
 
@@ -33,6 +34,12 @@ public class EtatAllerRecolter extends Etat{
         Etat etat = new EtatAcheter(getAutomate());
         if(aRecolte){
             etat = new EtatCheckAction(getAutomate());
+        }else{
+            if(getAutomate().getModuleMemoire().getQuantiteRessource(TypeRessource.CAULIFLOWERMATURE) > 0 
+            || getAutomate().getModuleMemoire().getQuantiteRessource(TypeRessource.PARSNIPMATURE) > 0
+            || getAutomate().getModuleMemoire().getQuantiteRessource(TypeRessource.EGG) > 0){
+                etat = new EtatVendre(getAutomate());
+            }
         }
         return etat;
     }
