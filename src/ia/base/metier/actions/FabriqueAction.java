@@ -27,6 +27,12 @@ public class FabriqueAction {
             case MAGASIN:
                 action = new ActionDemande("STORE");
                 break;
+            case OEUFS:
+                action = new ActionDemande("EGG");
+                break;
+            case CHICKEN:
+                action = new ActionDemande("CHICKEN");
+                break;
         }
         return action;
     }
@@ -97,8 +103,8 @@ public class FabriqueAction {
             case CAULIFLOWERMATURE:
                 action = new ActionVendre(TypeRessource.CAULIFLOWERMATURE);
                 break;
-            case CHICKEN:
-                action = new ActionVendre(TypeRessource.CHICKEN);
+            case EGG:
+                action = new ActionVendre(TypeRessource.EGG);
                 break;    
         }
         return action;
@@ -160,5 +166,9 @@ public class FabriqueAction {
      */
     public static Action creerActionCueillir(){
         return new ActionCueillir();
+    }
+    
+    public static Action creerActionPrendreOeuf(){
+        return new ActionRecolteOeufs();
     }
 }

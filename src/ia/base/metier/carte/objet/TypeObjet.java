@@ -10,5 +10,5 @@ package ia.base.metier.carte.objet;
  * @author math7
  */
 public enum TypeObjet {
-    ARBRE, MAISON, ESCALIER, DEPART, CHOUFLEUR, PANAIS;
+    ARBRE, MAISON, ESCALIER, DEPART, CHOUFLEUR, PANAIS, OEUF, POULE;
 }

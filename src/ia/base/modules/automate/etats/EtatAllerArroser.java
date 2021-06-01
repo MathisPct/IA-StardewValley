@@ -72,6 +72,7 @@ public class EtatAllerArroser extends Etat{
             }
             if(caseAArroser != null){
                 aArrose = true;
+                getAutomate().getModuleMemoire().setCaseDestinationFinale(caseAArroser);
                 seDeplacerEn(caseAArroser.getCoordonnee());
                 getAutomate().getListeDesActionsARealiser().add(FabriqueAction.creerActionArroser());
             }

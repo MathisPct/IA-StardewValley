@@ -57,4 +57,13 @@ public class FabriqueObjet {
         }
         return plante;
     }
+    
+    /**
+     * Rajoute un oeuf à une case
+     * @param position de l'oeuf sur la carte
+     * @return l'oeuf qui a été placé sur une case
+     */
+    public static Oeuf creerOeuf(Case position){
+        return new Oeuf(position);
+    }
 }

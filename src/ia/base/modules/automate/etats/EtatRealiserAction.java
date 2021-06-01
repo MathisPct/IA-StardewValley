@@ -10,9 +10,11 @@ import ia.base.metier.actions.ActionCouperArbre;
 import ia.base.metier.actions.FabriqueAction;
 import ia.base.metier.actions.TypeAction;
 import ia.base.metier.actions.TypeActionRecolte;
+import ia.base.metier.actions.TypeDemande;
 import ia.base.metier.carte.Coordonnee;
 import ia.base.metier.carte.cases.Case;
 import ia.base.metier.carte.objet.TypeObjet;
+import ia.base.metier.carte.ressources.TypeRessource;
 import ia.base.modules.automate.Automate;
 import ia.base.modules.automate.Etat;
 

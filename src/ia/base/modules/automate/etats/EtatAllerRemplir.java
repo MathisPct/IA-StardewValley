@@ -54,6 +54,7 @@ public class EtatAllerRemplir extends Etat{
         }
         if(caseBordDeLeauLaPlusProche != null){
             seDeplacerEn(caseBordDeLeauLaPlusProche.getCoordonnee());
+            getAutomate().getModuleMemoire().setCaseDestinationFinale(caseBordDeLeauLaPlusProche);
             for (Case v : caseBordDeLeauLaPlusProche.getVoisins()) {
                 if(v.getType() == TypeCase.EAU){
                     direction = caseBordDeLeauLaPlusProche.getMouvementPourAller(v);

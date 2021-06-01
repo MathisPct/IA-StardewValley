@@ -65,8 +65,11 @@ public class EtatAcheter extends Etat{
                     }
                     seDeplacerEn(caseMagasinPlusProche.getCoordonnee());
                     this.vaAcheter = true;
+                    if(getAutomate().getModuleMemoire().getQuantiteRessource(TypeRessource.GOLD) - 1000 >= 20){
+                        action = FabriqueAction.creerActionAcheter(TypeRessource.CHICKEN);
+                    }
                     //si il reste des graines de panais 
-                    if(getAutomate().getModuleMemoire().getStockMagasin(TypeRessource.PARSNIPSEED) >= 1){
+                    else if(getAutomate().getModuleMemoire().getStockMagasin(TypeRessource.PARSNIPSEED) >= 1){
                         action = FabriqueAction.creerActionAcheter(TypeRessource.PARSNIPSEED);
                     }
                     //sinon on vérifie nos golds si on peut acheter des graines de choux fleurs 

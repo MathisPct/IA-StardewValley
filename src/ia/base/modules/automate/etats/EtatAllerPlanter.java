@@ -54,6 +54,7 @@ public class EtatAllerPlanter extends Etat{
             }
             if(caseTerreVide != null){
                 seDeplacerEn(caseTerreVide.getCoordonnee());
+                getAutomate().getModuleMemoire().setCaseDestinationFinale(caseTerreVide);
                 if(super.getAutomate().getModuleMemoire().getQuantiteRessource(TypeRessource.PARSNIPSEED) >=1 ) getAutomate().getListeDesActionsARealiser().add(FabriqueAction.creerActionPlanter(TypeRessource.PARSNIPSEED));
                 else if(super.getAutomate().getModuleMemoire().getQuantiteRessource(TypeRessource.CAULIFLOWERSEED) >=1 ) getAutomate().getListeDesActionsARealiser().add(FabriqueAction.creerActionPlanter(TypeRessource.CAULIFLOWERSEED));
                 aPlante = true;

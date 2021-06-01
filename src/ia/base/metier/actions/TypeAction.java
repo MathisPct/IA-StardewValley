@@ -20,5 +20,6 @@ public enum TypeAction {
     ARROSER,
     REMPLIR,
     GRANDIR,
-    CUEILLIR;
+    CUEILLIR,
+    RECOLTEOEUF;
 }

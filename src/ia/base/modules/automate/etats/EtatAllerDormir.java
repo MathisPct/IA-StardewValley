@@ -30,6 +30,7 @@ public class EtatAllerDormir extends Etat{
     @Override
     public Action action() {
         seDeplacerEn(getAutomate().getModuleMemoire().getCarte().getCoordonneeDepart());
+        getAutomate().getModuleMemoire().setCaseDestinationFinale(getAutomate().getModuleMemoire().getCarte().getCase(getAutomate().getModuleMemoire().getCarte().getCoordonneeDepart()));
         getAutomate().getListeDesActionsARealiser().add(FabriqueAction.creerActionStatique(TypeActionStatique.DORMIR));
         return null; //car etat de réflexion
     }

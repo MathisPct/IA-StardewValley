@@ -68,6 +68,7 @@ public class EtatAllerRecolter extends Etat{
         }
         if(caseARecolte != null){
             seDeplacerEn(caseARecolte.getCoordonnee());
+            getAutomate().getModuleMemoire().setCaseDestinationFinale(caseARecolte);
             getAutomate().getListeDesActionsARealiser().add(FabriqueAction.creerActionCueillir());
             this.aRecolte = true;
         }

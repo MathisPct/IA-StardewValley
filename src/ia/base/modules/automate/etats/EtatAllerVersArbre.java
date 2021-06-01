@@ -55,6 +55,7 @@ public class EtatAllerVersArbre extends Etat{
         }
         if(caseArbrePlusProche != null){
             seDeplacerEn(caseArbrePlusProche.getCoordonnee());
+            getAutomate().getModuleMemoire().setCaseDestinationFinale(caseArbrePlusProche);
             this.arbreTrouve = true;
             if(!getAutomate().getListeDesActionsARealiser().isEmpty()) {
                 Action action = getAutomate().getListeDesActionsARealiser().get(getAutomate().getListeDesActionsARealiser().size()-1);

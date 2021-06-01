@@ -66,12 +66,13 @@ public class EtatVendre extends Etat{
             }
             this.vaVendre = true;
             seDeplacerEn(caseMagasinPlusProche.getCoordonnee());
+            getAutomate().getModuleMemoire().setCaseDestinationFinale(caseMagasinPlusProche);
             if(getAutomate().getModuleMemoire().getQuantiteRessource(TypeRessource.CAULIFLOWERMATURE) > 0 ){
                 getAutomate().getListeDesActionsARealiser().add(FabriqueAction.creerActionVendre(TypeRessource.CAULIFLOWERMATURE));
             }else if(getAutomate().getModuleMemoire().getQuantiteRessource(TypeRessource.PARSNIPMATURE) > 0){
                 getAutomate().getListeDesActionsARealiser().add(FabriqueAction.creerActionVendre(TypeRessource.PARSNIPMATURE));
-            }else if(getAutomate().getModuleMemoire().getQuantiteRessource(TypeRessource.CHICKEN) > 0){
-                getAutomate().getListeDesActionsARealiser().add(FabriqueAction.creerActionVendre(TypeRessource.CHICKEN));
+            }else if(getAutomate().getModuleMemoire().getQuantiteRessource(TypeRessource.EGG) > 0){
+                getAutomate().getListeDesActionsARealiser().add(FabriqueAction.creerActionVendre(TypeRessource.EGG));
             }
         }
         return null;
