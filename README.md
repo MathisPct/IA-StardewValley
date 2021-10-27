@@ -8,7 +8,7 @@
 
 ## Qu'est-ce que m'a apporté ce projet❓
 
-### Communication avec un protocole réseau
+### ▶️Communication avec un protocole réseau
 Au début du projet, j'ai dû passer par une phase d'appropriation de la passerelle de communication avec le serveur du jeu vidéo afin de détérminer les messages à échanger avec celui-ci.
 
 ### ▶️Organisation du code, polymorphisme et abstraction 
