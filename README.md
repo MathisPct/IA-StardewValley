@@ -6,6 +6,13 @@
 
 <i>⚠️Ce projet a été réalisé dans un cadre pédagogique. À ce titre, il n'a pas vocation à être utilisé en-dehors de ce cadre. Les différents éléments scénaristiques, lieux et personnages utilisés dans ce projet appartiennent à leurs propriétaires respectifs.</i>
 
+## Comment démarrer le projet
+[Serveur]: Serveurs/ServeurRapide.jar
+
+Avant d'exécuter le programme, il faut démarrer le serveur (chemin du serveur: [Serveur]).
+Veuillez-suivre la procédure ci-dessous afin de vous aider à démarrer le projet
+<img src="Documentation/DemarrerProjet.gif" alt="Tutoriel du serveur">
+
 ## Qu'est-ce que m'a apporté ce projet❓
 
 ### ▶️Communication avec un protocole réseau
